@@ -11,13 +11,10 @@ title: Tarot Card Reading - Celtic Cross Spread
     <title>{{ page.title }}</title>
     
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
 </head>
 <body>
     <h1>Celtic Cross Tarot Card Reading</h1>
-    <!-- Dropdowns for each card position -->
+    <!-- Input fields for each card position -->
     <form id="tarotForm">
         <p>Select cards for each position:</p>
         <div>
@@ -61,19 +58,28 @@ title: Tarot Card Reading - Celtic Cross Spread
             <input type="text" id="card10" class="card-input" placeholder="Type card name">
         </div>
         <br>
-        </br>
         <button type="submit">Interpret Reading</button>
     </form>
-<div id="interpretation"></div>
+    <div id="interpretation"></div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script>
+    $(document).ready(function() {
+        $(".card-input").autocomplete({
+            source: [
+                "The Fool", "The Magician", "The High Priestess", "The Empress", "The Emperor",
+                // Add all your cards here
+            ],
+            autoFocus: true
+        });
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
-        // Define displayResults here or ensure it's accessible
         function displayResults() {
             console.log("Interpretation started."); // Debugging
             // Implementation of displayResults
+            // This should fetch data, process form inputs, and display results.
         }
 
         document.getElementById('tarotForm').addEventListener('submit', function(event) {
