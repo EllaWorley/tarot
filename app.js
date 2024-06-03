@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
         "Page of Pentacles Reversed", "Knight of Pentacles Reversed", "Queen of Pentacles Reversed", "King of Pentacles Reversed"
     ];
 
+    const apiUrl = 'https://opensheet.elk.sh/1n3NmyMs5TqD7V6V6hap9NS_SgcraUwHgd4TZZ9QItL0/All%20Cards%2FMeanings!A3:L158';
+
     $(".card-input").autocomplete({
         source: tarotCards,
         autoFocus: true
@@ -47,37 +49,35 @@ document.addEventListener('DOMContentLoaded', function() {
         displayResults();
     });
 
-function displayResults() {
-    axios.get(apiUrl)
-        .then(response => {
-            const data = response.data; // Assuming this returns an array of objects where each object contains card details
-            let interpretation = '';
+    function displayResults() {
+        axios.get(apiUrl)
+            .then(response => {
+                const data = response.data; // Assuming this returns an array of objects where each object contains card details
+                let interpretation = '';
 
-            // Loop through each card input and find the data
-            document.querySelectorAll('.card-input').forEach((input, index) => {
-                const cardName = input.value.trim();
-                const cardData = data.find(card => card.Name.toLowerCase() === cardName.toLowerCase());
+                // Loop through each card input and find the data
+                document.querySelectorAll('.card-input').forEach((input, index) => {
+                    const cardName = input.value.trim().toLowerCase();
+                    const cardData = data.find(card => card.Name.toLowerCase() === cardName);
 
-                if (cardData) {
-                    // Columns are assumed to be 'C', 'D', 'E', etc., based on card position (1 to 10)
-                    // Fetching the summary from the appropriate column based on card position
-                    const columnLetter = String.fromCharCode(67 + index); // 67 is ASCII for 'C'
-                    const positionSummary = cardData[columnLetter]; 
+                    if (cardData) {
+                        // Columns are assumed to be 'C', 'D', 'E', etc., based on card position (1 to 10)
+                        const columnLetter = String.fromCharCode(67 + index); // 67 is ASCII for 'C'
+                        const positionSummary = cardData[columnLetter];
 
-                    interpretation += `<h3>Position ${index + 1} - ${cardName}</h3>
-                                       <p>${positionSummary}</p>`;
-                } else {
-                    interpretation += `<h3>Position ${index + 1} - Card not found</h3>
-                                       <p>No summary available. Please check you've spelled the name of your card correctly and written out all numbers.</p>`;
-                }
+                        interpretation += `<h3>Position ${index + 1} - ${cardName}</h3>
+                                           <p>${positionSummary}</p>`;
+                    } else {
+                        interpretation += `<h3>Position ${index + 1} - Card not found</h3>
+                                           <p>No summary available. Please check the spelling and format of the card name.</p>`;
+                    }
+                });
+
+                document.getElementById('interpretation').innerHTML = interpretation;
+            })
+            .catch(error => {
+                console.error('Error loading the data:', error);
+                document.getElementById('interpretation').innerHTML = `<p>Error retrieving card information. Please try again.</p>`;
             });
-
-            document.getElementById('interpretation').innerHTML = interpretation;
-        })
-        .catch(error => {
-            console.error('Error loading the data:', error);
-            document.getElementById('interpretation').innerHTML = `<p>Error retrieving card information. Please try again.</p>`;
-        });
-}
-
+    }
 });
