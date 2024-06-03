@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-	const googleSheetID = '1n3NmyMs5TqD7V6V6hap9NS_SgcraUwHgd4TZZ9QItL0';
-	const apiUrl = `https://opensheet.elk.sh/${googleSheetID}/Sheet1!A3:L158`;
-Sheet1!A3:L158`;
+    const googleSheetID = '1n3NmyMs5TqD7V6V6hap9NS_SgcraUwHgd4TZZ9QItL0';
+    const apiUrl = `https://opensheet.elk.sh/${googleSheetID}/Sheet1!A3:L158`;
 
     function loadCards() {
         axios.get(apiUrl)
@@ -36,3 +35,12 @@ Sheet1!A3:L158`;
                                        <p><strong>Summary:</strong> ${positionData}</p>`;
                 }
                 document.getElementById('interpretation').innerHTML = interpretation;
+            });
+    }
+
+    loadCards(); // Call loadCards to populate the dropdowns
+    document.getElementById('tarotForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+        displayResults();
+    });
+});
