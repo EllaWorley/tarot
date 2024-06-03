@@ -64,10 +64,23 @@ title: Tarot Card Reading - Celtic Cross Spread
         </br>
         <button type="submit">Interpret Reading</button>
     </form>
-    <h2>Reading Interpretation:</h2>
-    <div id="interpretation"></div>
+<div id="interpretation"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Define displayResults here or ensure it's accessible
+        function displayResults() {
+            console.log("Interpretation started."); // Debugging
+            // Implementation of displayResults
+        }
+
+        document.getElementById('tarotForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            displayResults();
+        });
+    });
+    </script>
 </body>
 </html>
