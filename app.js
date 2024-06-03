@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const googleSheetID = '1n3NmyMs5TqD7V6V6hap9NS_SgcraUwHgd4TZZ9QItL0';
-    const apiUrl = `https://opensheet.elk.sh/${googleSheetID}/Sheet1!A3:L158`;
+    const apiUrl = `https://opensheet.elk.sh/${googleSheetID}/All%20Cards%2FMeanings!A3:L158`;
 
     function loadCards() {
         axios.get(apiUrl)
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const dropdown = document.getElementById('card' + i);
                     data.forEach(item => {
                         let option = document.createElement('option');
-                        option.value = item.Name;
+                        option.value = item.Name; // Assumes 'Name' is your column A in the JSON response
                         option.textContent = item.Name;
                         dropdown.appendChild(option);
                     });
@@ -29,18 +29,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 for (let i = 1; i <= 10; i++) {
                     const selectedCard = document.getElementById('card' + i).value;
                     const cardData = data.find(card => card.Name === selectedCard);
-                    const positionData = cardData['C' + i]; // Assumes columns C-L are in the order of the positions
+                    const positionData = cardData[`C${i}`]; // Adjusted to dynamically access each column based on the position
                     interpretation += `<h3>Position ${i} - ${selectedCard}</h3>
-                                       <p><strong>Meaning:</strong> ${cardData.B}</p>
-                                       <p><strong>Summary:</strong> ${positionData}</p>`;
+                                       <p><strong>Meaning:</strong> ${cardData.B}</p>  // 'B' is the general meaning
+                                       <p><strong>Position Meaning:</strong> ${positionData}</p>`; // Each card position has specific meaning
                 }
                 document.getElementById('interpretation').innerHTML = interpretation;
             });
     }
 
-    loadCards(); // Call loadCards to populate the dropdowns
+    loadCards();
     document.getElementById('tarotForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the form from submitting normally
+        event.preventDefault();  // Prevent the form from submitting in the traditional manner
         displayResults();
     });
 });
