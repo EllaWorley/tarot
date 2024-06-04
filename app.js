@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setUpForm(cardData) {
         console.log(cardData); // Check what's loaded
-        $(".card-input").autocomplete({
-            source: cardData.map(card => card.Name),
-            autoFocus: true
-            delay: 200
-        });
+            $(".card-input").autocomplete({
+                source: tarotCards, // Your array of cards
+                autoFocus: true,
+                delay: 300 // Optional: adds a slight delay to the search/filter operation
+            });
     
         document.getElementById('tarotForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Stops the form from submitting traditionally
