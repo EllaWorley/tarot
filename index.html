@@ -11,36 +11,7 @@ title: Tarot Card Reading - Celtic Cross Spread
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css2?family=Jacquard+12:wght@400&family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            display: flex;
-            max-width: 1200px; /* Adjust based on your preference */
-        }
-        .sidebar {
-            flex: 0 0 300px; /* Adjust width as necessary */
-            position: sticky;
-            padding-top: 40px;  
-            top: 20px;
-        }
-        .content {
-            flex: 1;
-            padding: 40px;
-            box-sizing: border-box;
-        }
-        .sidebar img {
-            width: 100%; /* Ensures the image fills the sidebar */
-            height: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
 </head>
 <body>
     <div class="container">
@@ -49,49 +20,48 @@ title: Tarot Card Reading - Celtic Cross Spread
         </div>
         <div class="content">
             <h1>Celtic Cross Tarot Card Reading</h1>
-            <!-- Input fields for each card position -->
             <form id="tarotForm">
                 <p>Indicate the card chosen for each position in the Celtic Cross tarot spread. Please spell out numbers and include "the" when appropriate. Reversed cards should be indicated with the word reversed following the card name.</p>
-                    <div>
-                        <label for="card1">Card 1 (What covers him, the situation): </label>
-                        <input type="text" id="card1" class="card-input" placeholder="Type card name">
-                    </div>
-                    <div>
-                        <label for="card2">Card 2 (What crosses him, the challenge/issue): </label>
-                        <input type="text" id="card2" class="card-input" placeholder="Type card name">
-                    </div>
-                    <div>
-                        <label for="card3">Card 3 (What crowns him, the ideal/best outcome): </label>
-                        <input type="text" id="card3" class="card-input" placeholder="Type card name">
-                    </div>
-                    <div>
-                        <label for="card4">Card 4 (What is beneath him, the tool/focus): </label>
-                        <input type="text" id="card4" class="card-input" placeholder="Type card name">
-                    </div>
-                    <div>
-                        <label for="card5">Card 5 (What is behind him, the past): </label>
-                        <input type="text" id="card5" class="card-input" placeholder="Type card name">
-                    </div>
-                    <div>
-                        <label for="card6">Card 6 (What is before him, the future): </label>
-                        <input type="text" id="card6" class="card-input" placeholder="Type card name">
-                    </div>
-                    <div>
-                        <label for="card7">Card 7 (Himself, the advice card): </label>
-                        <input type="text" id="card7" class="card-input" placeholder="Type card name">
-                    </div>
-                    <div>
-                        <label for="card8">Card 8 (His house/environment): </label>
-                        <input type="text" id="card8" class="card-input" placeholder="Type card name">
-                    </div>
-                    <div>
-                        <label for="card9">Card 9 (His hopes/fears): </label>
-                        <input type="text" id="card9" class="card-input" placeholder="Type card name">
-                    </div>
-                    <div>
-                        <label for="card10">Card 10 (The outcome): </label>
-                        <input type="text" id="card10" class="card-input" placeholder="Type card name">
-                    </div>
+                <div>
+                    <label for="card1">Card 1 (What covers him, the situation): </label>
+                    <input type="text" id="card1" class="card-input" placeholder="Type card name">
+                </div>
+                <div>
+                    <label for="card2">Card 2 (What crosses him, the challenge/issue): </label>
+                    <input type="text" id="card2" class="card-input" placeholder="Type card name">
+                </div>
+                <div>
+                    <label for="card3">Card 3 (What crowns him, the ideal/best outcome): </label>
+                    <input type="text" id="card3" class="card-input" placeholder="Type card name">
+                </div>
+                <div>
+                    <label for="card4">Card 4 (What is beneath him, the tool/focus): </label>
+                    <input type="text" id="card4" class="card-input" placeholder="Type card name">
+                </div>
+                <div>
+                    <label for="card5">Card 5 (What is behind him, the past): </label>
+                    <input type="text" id="card5" class="card-input" placeholder="Type card name">
+                </div>
+                <div>
+                    <label for="card6">Card 6 (What is before him, the future): </label>
+                    <input type="text" id="card6" class="card-input" placeholder="Type card name">
+                </div>
+                <div>
+                    <label for="card7">Card 7 (Himself, the advice card): </label>
+                    <input type="text" id="card7" class="card-input" placeholder="Type card name">
+                </div>
+                <div>
+                    <label for="card8">Card 8 (His house/environment): </label>
+                    <input type="text" id="card8" class="card-input" placeholder="Type card name">
+                </div>
+                <div>
+                    <label for="card9">Card 9 (His hopes/fears): </label>
+                    <input type="text" id="card9" class="card-input" placeholder="Type card name">
+                </div>
+                <div>
+                    <label for="card10">Card 10 (The outcome): </label>
+                    <input type="text" id="card10" class="card-input" placeholder="Type card name">
+                </div>
                 <br>
                 <button type="submit">Interpret Reading</button>
             </form>
@@ -100,29 +70,6 @@ title: Tarot Card Reading - Celtic Cross Spread
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $(".card-input").autocomplete({
-            source: [
-                "The Fool", "The Magician", "The High Priestess", "The Empress", "The Emperor", "The Hierophant", "The Lovers", "The Chariot", "Strength", "The Hermit", "Wheel of Fortune", "Justice", "The Hanged Man", "Death", "Temperance", "The Devil", "The Tower", "The Star", "The Moon", "The Sun", "Judgment", "The World", "Ace of Wands", "Two of Wands", "Three of Wands", "Four of Wands", "Five of Wands", "Six of Wands", "Seven of Wands", "Eight of Wands", "Nine of Wands", "Ten of Wands", "Page of Wands", "Knight of Wands", "Queen of Wands", "King of Wands", "Ace of Cups", "Two of Cups", "Three of Cups", "Four of Cups", "Five of Cups", "Six of Cups", "Seven of Cups", "Eight of Cups", "Nine of Cups", "Ten of Cups", "Page of Cups", "Knight of Cups", "Queen of Cups", "King of Cups", "Ace of Swords", "Two of Swords", "Three of Swords", "Four of Swords", "Five of Swords", "Six of Swords", "Seven of Swords", "Eight of Swords", "Nine of Swords", "Ten of Swords", "Page of Swords", "Knight of Swords", "Queen of Swords", "King of Swords", "Ace of Pentacles", "Two of Pentacles", "Three of Pentacles", "Four of Pentacles", "Five of Pentacles", "Six of Pentacles", "Seven of Pentacles", "Eight of Pentacles", "Nine of Pentacles", "Ten of Pentacles", "Page of Pentacles", "Knight of Pentacles", "Queen of Pentacles", "King of Pentacles", "The Fool Reversed", "The Magician Reversed", "The High Priestess Reversed", "The Empress Reversed", "The Emperor Reversed", "The Hierophant Reversed", "The Lovers Reversed", "The Chariot Reversed", "Strength Reversed", "The Hermit Reversed", "Wheel of Fortune Reversed", "Justice Reversed", "The Hanged Man Reversed", "Death Reversed", "Temperance Reversed", "The Devil Reversed", "The Tower Reversed", "The Star Reversed", "The Moon Reversed", "The Sun Reversed", "Judgment Reversed", "The World Reversed", "Ace of Wands Reversed", "Two of Wands Reversed", "Three of Wands Reversed", "Four of Wands Reversed", "Five of Wands Reversed", "Six of Wands Reversed", "Seven of Wands Reversed", "Eight of Wands Reversed", "Nine of Wands Reversed", "Ten of Wands Reversed", "Page of Wands Reversed", "Knight of Wands Reversed", "Queen of Wands Reversed", "King of Wands Reversed", "Ace of Cups Reversed", "Two of Cups Reversed", "Three of Cups Reversed", "Four of Cups Reversed", "Five of Cups Reversed", "Six of Cups Reversed", "Seven of Cups Reversed", "Eight of Cups Reversed", "Nine of Cups Reversed", "Ten of Cups Reversed", "Page of Cups Reversed", "Knight of Cups Reversed", "Queen of Cups Reversed", "King of Cups Reversed", "Ace of Swords Reversed", "Two of Swords Reversed", "Three of Swords Reversed", "Four of Swords Reversed", "Five of Swords Reversed", "Six of Swords Reversed", "Seven of Swords Reversed", "Eight of Swords Reversed", "Nine of Swords Reversed", "Ten of Swords Reversed", "Page of Swords Reversed", "Knight of Swords Reversed", "Queen of Swords Reversed", "King of Swords Reversed", "Ace of Pentacles Reversed", "Two of Pentacles Reversed", "Three of Pentacles Reversed", "Four of Pentacles Reversed", "Five of Pentacles Reversed", "Six of Pentacles Reversed", "Seven of Pentacles Reversed", "Eight of Pentacles Reversed", "Nine of Pentacles Reversed", "Ten of Pentacles Reversed", "Page of Pentacles Reversed", "Knight of Pentacles Reversed", "Queen of Pentacles Reversed", "King of Pentacles Reversed"
-            ],
-            autoFocus: true
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        function displayResults() {
-            console.log("Interpretation started."); // Debugging
-            // Implementation of displayResults
-            // This should fetch data, process form inputs, and display results.
-        }
-
-        document.getElementById('tarotForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            displayResults();
-        });
-    });
-    </script>
     <script src="app.js"></script>
 </body>
 </html>
