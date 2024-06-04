@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         $(".card-input").autocomplete({
             source: cardData.map(card => card.Name),
             autoFocus: true
+            delay: 200
         });
     
         document.getElementById('tarotForm').addEventListener('submit', function(event) {
