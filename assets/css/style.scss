@@ -12,3 +12,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Jacquard 12', serif;
 }
+.ui-autocomplete {
+    max-height: 200px; /* Adjust this value based on your needs and testing */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    border: 1px solid #ccc; /* Optional: adds a border to the dropdown */
+    background-color: white; /* Optional: ensures the background is white */
+    width: auto; /* Optional: adjusts the width to fit the content or specify a width */
+}
