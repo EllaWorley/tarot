@@ -30,23 +30,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     
         document.getElementById('tarotForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Stops the form from submitting traditionally
+            console.log("Form submitted, processing results..."); // Check if this logs
             displayResults(cardData);
         });
     }
-
-    function displayResults(cardData) {
-        let interpretation = '';
-
-        document.querySelectorAll('.card-input').forEach((input, index) => {
-            const cardName = input.value.trim().toLowerCase();
-            const cardInfo = cardData.find(card => card.Name.toLowerCase() === cardName);
-
-            if (cardInfo) {
-                const positionSummary = cardInfo.Meanings[index];
-                interpretation += `<h3>Position ${index + 1} - ${cardName}</h3><p>${positionSummary}</p>`;
-            } else {
-                interpretation += `<h3>Position ${index + 1} - Card not found</h3><p>Please check the spelling or try a different name. Example names include 'The Fool', 'The Magician', etc.</p>`;
+            function displayResults(cardData) {
+                console.log("Processing data...", cardData); // See what data is being processed
+                let interpretation = '';
+            
+                document.querySelectorAll('.card-input').forEach((input, index) => {
+                    const cardName = input.value.trim().toLowerCase();
+                    console.log("Looking for card: ", cardName); // Check the card name being searched
+                    const cardInfo = cardData.find(card => card.Name.toLowerCase() === cardName);
+                    console.log("Card found: ", cardInfo); // See the found card data
+            
+                    if (cardInfo) {
+                        const positionSummary = cardInfo.Meanings[index];
+                        interpretation += `<h3>Position ${index + 1} - ${cardName}</h3><p>${positionSummary}</p>`;
+                    } else {
+                        interpretation += `<h3>Position ${index + 1} - Card not found</h3><p>No summary available. Please check the spelling and format of the card name.</p>`;
+                    }
+                });
+            
+                document.getElementById('interpretation').innerHTML = interpretation;
             }
         });
 
