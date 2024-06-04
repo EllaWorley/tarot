@@ -12,6 +12,36 @@ title: Tarot Card Reading - Celtic Cross Spread
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css2?family=Jacquard+12:wght@400&family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px; /* Adjust based on your preference */
+        }
+        .sidebar {
+            flex: 0 0 300px; /* Adjust width as necessary */
+            position: sticky;
+            padding-top: 40px;  
+            top: 20px;
+        }
+        .content {
+            flex: 1;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        .sidebar img {
+            width: 100%; /* Ensures the image fills the sidebar */
+            height: auto;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
