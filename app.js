@@ -23,11 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function setUpForm(cardData) {
+        console.log(cardData); // Check what's loaded
         $(".card-input").autocomplete({
             source: cardData.map(card => card.Name),
             autoFocus: true
         });
-
+    
         document.getElementById('tarotForm').addEventListener('submit', function(event) {
             event.preventDefault();
             displayResults(cardData);
@@ -42,12 +43,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const cardInfo = cardData.find(card => card.Name.toLowerCase() === cardName);
 
             if (cardInfo) {
-                const positionSummary = cardInfo.Meanings[index]; // Use the index to get the corresponding meaning
-                interpretation += `<h3>Position ${index + 1} - ${cardName}</h3>
-                                   <p>${positionSummary}</p>`;
+                const positionSummary = cardInfo.Meanings[index];
+                interpretation += `<h3>Position ${index + 1} - ${cardName}</h3><p>${positionSummary}</p>`;
             } else {
-                interpretation += `<h3>Position ${index + 1} - Card not found</h3>
-                                   <p>No summary available. Please check the spelling and format of the card name.</p>`;
+                interpretation += `<h3>Position ${index + 1} - Card not found</h3><p>Please check the spelling or try a different name. Example names include 'The Fool', 'The Magician', etc.</p>`;
             }
         });
 
