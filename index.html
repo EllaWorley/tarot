@@ -9,64 +9,54 @@ title: Tarot Card Reading - Celtic Cross Spread
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }}</title>
-    
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px; /* Adjust based on your preference */
+        }
+        .sidebar {
+            flex: 0 0 300px; /* Adjust width as necessary */
+            position: sticky;
+            top: 20px;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .sidebar img {
+            width: 100%; /* Ensures the image fills the sidebar */
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-        <div style="display: flex;">
-        <div style="flex: 1; padding: 20px;">
-            <img src="assets/images/the_sun_card.jpg" alt="The Sun Card" style="width: 100%; max-width: 300px;">
+    <div class="container">
+        <div class="sidebar">
+            <img src="assets/images/the_sun_card.jpg" alt="The Sun Card">
         </div>
-        <div style="flex: 3; padding: 20px;">
-    <h1>Celtic Cross Tarot Card Reading</h1>
-    <!-- Input fields for each card position -->
-    <form id="tarotForm">
-        <p>Indicate the card chosen for each position in the Celtic Cross tarot spread. Please spell out numbers and include "the" when appropriate. Reversed cards should be indicated with the word reversed following the card name.</p>
-        <div>
-            <label for="card1">Card 1 (What covers him, the situation): </label>
-            <input type="text" id="card1" class="card-input" placeholder="Type card name">
+        <div class="content">
+            <h1>Celtic Cross Tarot Card Reading</h1>
+            <!-- Input fields for each card position -->
+            <form id="tarotForm">
+                <p>Indicate the card chosen for each position in the Celtic Cross tarot spread. Please spell out numbers and include "the" when appropriate. Reversed cards should be indicated with the word reversed following the card name.</p>
+                <!-- Input fields here -->
+                <br>
+                <button type="submit">Interpret Reading</button>
+            </form>
+            <div id="interpretation"></div>
         </div>
-        <div>
-            <label for="card2">Card 2 (What crosses him, the challenge/issue): </label>
-            <input type="text" id="card2" class="card-input" placeholder="Type card name">
-        </div>
-        <div>
-            <label for="card3">Card 3 (What crowns him, the ideal/best outcome): </label>
-            <input type="text" id="card3" class="card-input" placeholder="Type card name">
-        </div>
-        <div>
-            <label for="card4">Card 4 (What is beneath him, the tool/focus): </label>
-            <input type="text" id="card4" class="card-input" placeholder="Type card name">
-        </div>
-        <div>
-            <label for="card5">Card 5 (What is behind him, the past): </label>
-            <input type="text" id="card5" class="card-input" placeholder="Type card name">
-        </div>
-        <div>
-            <label for="card6">Card 6 (What is before him, the future): </label>
-            <input type="text" id="card6" class="card-input" placeholder="Type card name">
-        </div>
-        <div>
-            <label for="card7">Card 7 (Himself, the advice card): </label>
-            <input type="text" id="card7" class="card-input" placeholder="Type card name">
-        </div>
-        <div>
-            <label for="card8">Card 8 (His house/environment): </label>
-            <input type="text" id="card8" class="card-input" placeholder="Type card name">
-        </div>
-        <div>
-            <label for="card9">Card 9 (His hopes/fears): </label>
-            <input type="text" id="card9" class="card-input" placeholder="Type card name">
-        </div>
-        <div>
-            <label for="card10">Card 10 (The outcome): </label>
-            <input type="text" id="card10" class="card-input" placeholder="Type card name">
-        </div>
-        <br>
-        <button type="submit">Interpret Reading</button>
-    </form>
-    <div id="interpretation"></div>
-
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script>
