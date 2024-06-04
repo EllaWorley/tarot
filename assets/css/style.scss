@@ -1,4 +1,14 @@
 ---
 ---
 
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+12:wght@400&family=Karla:wght@400;700&display=swap');
 @import "{{ site.theme }}";
+
+/* Your custom styles below */
+body {
+    font-family: 'Karla', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Jacquard 12', serif;
+}
