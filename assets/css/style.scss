@@ -1,15 +1,8 @@
----
----
-
-/* Import fonts from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Jacquard+12:wght@400&family=Karla:wght@400;700&display=swap');
-
-/* Import theme styles if you're using a Jekyll theme */
-@import "{{ site.theme }}";
 
 /* Base styles */
 body {
-    font-family: 'Karla', sans-serif; /* Sets the base font for the body */
+    font-family: 'Karla', sans-serif;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -20,44 +13,44 @@ body {
 
 /* Heading styles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Jacquard 12', serif; /* Applies Jacquard 12 to all heading levels */
-    color: #333; /* Dark gray color for text, feel free to change */
+    font-family: 'Jacquard 12', serif;
+    color: #333;
 }
 
 /* Layout container styles */
 .container {
     display: flex;
-    max-width: 1200px; /* Max width of the central container, adjust as needed */
-    width: 100%; /* Full width on smaller screens */
+    max-width: 1200px;
+    width: 100%;
 }
 
 /* Sidebar styles */
 .sidebar {
-    flex: 0 0 300px; /* Sidebar width and flex-basis set to 300px */
+    flex: 0 0 300px;
     position: sticky;
-    top: 20px; /* Distance from top when scrolling */
-    padding-top: 40px; /* Padding at the top of the sidebar */
+    top: 20px;
+    padding-top: 40px;
 }
 
 /* Content area styles */
 .content {
-    flex: 1; /* Content takes the remaining space */
-    padding: 40px; /* Padding inside the content area */
-    box-sizing: border-box; /* Ensures padding does not affect the width */
+    flex: 1;
+    padding: 40px;
+    box-sizing: border-box;
 }
 
 /* Image styles within the sidebar */
 .sidebar img {
-    width: 100%; /* Image takes full width of the sidebar */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    height: auto;
 }
 
 /* Styles for jQuery UI Autocomplete */
 .ui-autocomplete {
-    max-height: 200px; /* Maximum height of dropdown */
-    overflow-y: auto; /* Enable vertical scroll if items exceed max-height */
-    overflow-x: hidden; /* Prevent horizontal scrollbar */
-    border: 1px solid #ccc; /* Gray border around the dropdown */
-    background-color: white; /* White background for dropdown items */
-    width: auto; /* Width set automatically by content width */
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #ccc;
+    background-color: white;
+    width: auto;
 }
