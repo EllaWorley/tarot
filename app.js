@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
     
   // Fetch and parse the CSV data
-    fetch('Celtic Cross Tarot Cards & Meanings - All Cards_Meanings.csv')
+    fetch('card_meanings.csv')
         .then(response => response.text())
         .then(csvText => {
             const cardData = parseCSV(csvText);
