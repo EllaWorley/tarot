@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         return parsed.data.map(row => ({
             Name: row.Card.trim(),
+            LongInterpretation: row['Long Interpretation']?.trim() ?? "",
             Meanings: [
                 row['Position 1']?.trim() ?? "",
                 row['Position 2']?.trim() ?? "",
@@ -34,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setUpForm(cardData) {
         const cardNames = cardData.map(card => card.Name);
-        console.log("Setting up form with card names:", cardNames);
         $(".card-input").autocomplete({
             source: cardNames,
             autoFocus: true,
@@ -54,7 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const cardInfo = cardData.find(card => card.Name.toLowerCase() === cardName);
             if (cardInfo) {
                 const positionSummary = cardInfo.Meanings[index]; // Ensure this index corresponds correctly to columns in CSV
-                interpretation += `<h3>Position ${index + 1} - ${cardInfo.Name}</h3><p>${positionSummary}</p>`;
+                interpretation += `<h3>Position ${index + 1} - ${cardInfo.Name}</h3>`;
+                interpretation += `<p><strong>Long Interpretation:</strong> ${cardInfo.LongInterpretation.replace(/\n/g, "<br>")}</p>`;
+                interpretation += `<p>${positionSummary.replace(/\n/g, "<br>")}</p>`;
             } else {
                 interpretation += `<h3>Position ${index + 1} - Card not found</h3><p>No summary available. Please check the spelling and format of the card name.</p>`;
             }
